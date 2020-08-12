@@ -1,0 +1,557 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=Roboto:wght@100;300;400;500&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    background-color: #FCFCFC;
+    margin: 0;
+    padding: 0;
+    color: #333333;
+}
+
+a,
+ul,
+li {
+    // text-decoration: none !important;
+    text-decoration-color: none !important;
+    color: #222222;
+    list-style: none;
+}
+
+a:hover {
+    color: #5BB1A8;
+    text-decoration: none;
+}
+
+.title2 {
+    font-size: 24px;
+    font-weight: 500;
+    font-family: 'Roboto';
+    letter-spacing: 1px;
+    color: #073C64;
+    padding: 5px 0 0 0;
+    text-transform: uppercase;
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
+    border-bottom-width: 3px;
+    border-bottom-style: solid;
+    border-bottom-color: #fdcb2c;
+    display: inline-block;
+}
+
+.navbar {
+    background-color: #0E7165;
+    border-bottom: 1px solid rgb(30, 167, 156);
+    font-size: 16px;
+
+    .navbar-brand img {
+        float: left;
+        padding-right: 8px;
+        max-height: 70px;
+    }
+
+    .navbar-brand h6 {
+        font-family: 'Roboto', serif;
+        letter-spacing: 0.15rem;
+    }
+
+    .navbar-brand h6 span {
+        font-size: 20px;
+    }
+
+    .nav-item {
+        margin-right: 24px;
+        font-weight: 300;
+        font-size: 14px;
+        letter-spacing: 1px;
+
+        .nav-link:hover {
+            color: white;
+        }
+    }
+
+    .nav-item .active {
+        font-weight: 400;
+    }
+}
+
+/* Carousel */
+.carousel {
+    background-color: rgb(30, 167, 156);
+
+    .carousel-item img {
+        max-height: 60vh;
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+    }
+}
+
+.news-section {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+
+    .title2 {
+        letter-spacing: 1px;
+        color: #073C64;
+        padding: 5px 0 0 0;
+        text-transform: uppercase;
+        text-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
+        border-bottom-width: 3px;
+        border-bottom-style: solid;
+        border-bottom-color: rgb(253, 203, 44);
+        display: inline-block;
+    }
+
+    .news-body .card {
+        border: none;
+        background-color: #FCFCFC;
+
+        .post-img {
+            height: 180px;
+            position: relative;
+            overflow: hidden;
+            display: block;
+        }
+
+        .post-img img {
+            width: 100%;
+            height: auto;
+            position: absolute;
+        }
+
+        .card-body {
+            padding: 12px 2px;
+        }
+
+        .card-title {
+            margin-bottom: 5px !important;
+        }
+
+        .card-text {
+            font-size: 14px;
+            font-weight: 300;
+            color: #6d6d6d;
+        }
+    }
+
+    .post-title h3 {
+        font-size: 18px;
+        margin-bottom: 0;
+        font-weight: 400;
+        line-height: 1.4;
+        letter-spacing: 1.2;
+    }
+}
+
+.post-body {
+    border-bottom: 1px solid #e6e6e6;
+    margin-top: 15px;
+}
+
+.list-title {
+    margin-bottom: 30px;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.post-image a img {
+    overflow: hidden;
+    display: block;
+    position: relative;
+    background-color: #ffffff;
+    background-image: url('../images/Logo-PNG.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 180px;
+    width: auto;
+    max-width: none;
+    top: auto;
+}
+
+.post-title h3 {
+    font-size: 16px;
+    font-weight: 400;
+    font-family: 'PT Serif';
+    color: #073c64;
+    line-height: 20px;
+}
+
+.post-date {
+    font-size: 12px;
+    color: #A6A6A6;
+}
+
+.btn-box {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 1px solid #e6e6e6;
+}
+
+.btn-more {
+    margin-top: 15px;
+    font-family: 'PT Serif';
+    color: #0B554F;
+    font-size: 14px;
+}
+
+.btn-more:hover {
+    color: #1D897F;
+}
+
+.info-section {
+    background-image: url('/frontend/images/bg_jobs.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    // JOBS
+    .jobs-section {
+        background-color: #FAFAFA;
+        min-height: 590px;
+    }
+
+    // SCHEDULE
+    .donation-section {
+        background-color: #FFF;
+        min-height: 590px;
+    }
+
+    // SCHEDULE
+    .schedule-section {
+        background-color: #FAFAFA;
+        min-height: 590px;
+
+        .event-date {
+            border-right: 1px solid #e6e6e6;
+            padding-right: 0px;
+            position: relative;
+            width: 30%;
+        }
+
+        .post-body .event-date span {
+            font-size: 42px;
+            font-family: 'PT Serif', sans-serif;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .post-content {
+            width: 70%;
+            z-index: 99;
+        }
+
+        .post-body .event-date strong {
+            padding-bottom: 4px;
+            display: block;
+            font-size: 12px;
+            font-weight: normal;
+            color: rgb(179, 179, 179);
+            font-family: 'Roboto';
+        }
+    }
+
+    .body-custom {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+}
+
+.article-section {
+    padding: 45px 30px 20px 30px;
+
+    .list-title {
+        margin-bottom: 15px;
+    }
+
+    .article-carousel {
+        padding: 20px;
+    }
+
+    .card-article {
+        background-size: cover;
+        background-color: #ddd;
+        color: #fff;
+        padding: 30px;
+        min-height: 380px;
+        margin-bottom: 20px;
+    }
+
+    .article-category {
+        font-size: 18px;
+        color: #fff;
+    }
+
+    .article-title {
+        font-size: 24px;
+        color: #fff;
+        text-transform: uppercase;
+        line-height: 30px;
+        font-family: 'Roboto';
+    }
+
+    .article-button {
+        .btn-article-details {
+            background-color: #fdcb2c;
+            color: #fff;
+
+            &:hover {
+                background-color: #fdcb2c;
+                color: #fff;
+            }
+        }
+    }
+
+    .owl-theme .owl-controls .owl-page {
+        display: inline-block;
+    }
+
+    .owl-theme .owl-controls .owl-page span {
+        background: none repeat scroll 0 0 #869791;
+        border-radius: 20px;
+        display: block;
+        height: 12px;
+        margin: 5px 7px;
+        opacity: 0.5;
+        width: 12px;
+    }
+}
+
+footer {
+    margin-top: 30px;
+    padding: 45px 20px;
+    background-color: #0D7166;
+
+    .footer-info {
+        color: #fff;
+        font-weight: 400;
+    }
+
+    .info-body {
+        line-height: 25px;
+
+        a {
+            color: #fff;
+        }
+    }
+
+    .footer-link {
+        color: #fff;
+
+        .link-header {
+            letter-spacing: 1px;
+        }
+
+        .list-group {
+            list-style: none;
+
+            .list-item {
+                padding: 5px 0;
+            }
+
+            .list-item a {
+                color: #fff;
+                font-weight: 300;
+                text-decoration: none;
+                opacity: 70%;
+            }
+
+            .list-item :hover {
+                opacity: 100%;
+            }
+        }
+    }
+
+    .social-media {
+        color: #fff;
+
+        .social-media-logo img {
+            max-width: 30px;
+            margin: 0 5px;
+            opacity: 70%;
+        }
+
+        .social-media-logo img:hover {
+            opacity: 100%;
+        }
+    }
+
+    .btn-login {
+        background-color: transparent;
+        color: #FCFCFC;
+        font-weight: 300;
+        padding-left: 0 !important;
+        font-size: 14px;
+        opacity: 60%;
+    }
+
+    .btn-login:hover {
+        opacity: 100%;
+        color: #FCFCFC;
+    }
+}
+
+.container-fluid {
+    background-color: #005950;
+    color: #fff;
+
+    .copy {
+        font-weight: 300;
+        font-size: 12px;
+        opacity: 50%;
+    }
+}
+
+// News.html
+.breadcrumb {
+    background-color: #FAFAFA;
+    border-bottom: 1px solid #e6e6e6;
+
+    .breadcrumb-item.active {
+        color: #5BB1A8;
+    }
+
+    .breadcrumb-item+.breadcrumb-item::before {
+        font-family: 'FontAwesome';
+        content: "\f105";
+    }
+}
+
+.single-content {
+    font-family: 'PT Serif';
+
+    .content-title h2 {
+        font-weight: 500;
+        font-size: 30px;
+        color: #073c64;
+    }
+
+    .content-span {
+        font-family: 'Roboto';
+    }
+
+    .text-content {
+        color: #222222;
+        font-weight: 400;
+        line-height: 24px;
+        word-spacing: 2px;
+    }
+}
+
+.share {
+    border-top: 1px solid #e6e6e6;
+
+    .share-header {
+        color: #1D897F;
+    }
+
+    .list-group {
+        display: block;
+        padding: 30px 0;
+    }
+
+    .list-group li {
+        display: inline-block;
+        margin-right: 3px;
+    }
+
+    .list-group li a {
+        display: block;
+        font-size: 18px;
+        color: white;
+        width: 45px;
+        height: 45px;
+        line-height: 45px;
+    }
+}
+
+.search {
+    min-height: 56vh;
+    padding-top: 120px;
+
+    .card-search {
+        padding: 45px 0px;
+    }
+}
+
+.all-content {
+    .content-list {
+        padding-bottom: 15px;
+        border-bottom: 1px solid #e6e6e6;
+    }
+
+    .content-image a {
+        height: 180px;
+        overflow: hidden;
+        display: block;
+        position: relative;
+        background-color: #e6e6e6;
+        background-image: url('/frontend/images/Logo-PNG.png');
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: 70px;
+    }
+
+    .content-info {
+        color: #a2a2a2;
+        font-size: 12px;
+        letter-spacing: 1px;
+
+        i {
+            font-size: 16px;
+            padding-right: 4px;
+        }
+    }
+
+    .title3 h3 {
+        font-size: 20px;
+        font-family: 'Roboto';
+    }
+}
+
+.page-item.active .page-link {
+    background-color: rgb(30, 167, 156);
+    border-color: rgb(30, 167, 156);
+}
+
+.page-link {
+    color: rgb(30, 167, 156);
+}
+
+.page-link:hover {
+    color: #1D897F;
+}
+
+.recent-post {
+    .title2 {
+        font-size: 20px;
+        letter-spacing: 0px;
+        font-weight: 400;
+    }
+
+    .recent-post-list {
+        border-bottom: 1px solid #e6e6e6;
+    }
+}
+
+.contact {
+    padding: 50px 0;
+    min-height: 50vh;
+
+    h4 {
+        font-family: 'Roboto';
+    }
+}
+
+
+// 1024 Min Width
+@media only screen and (min-width: 1024px) {
+    .post-image a {
+        height: 80px;
+        background-size: 40px;
+    }
+
+    .post-image a img {
+        max-height: 80px;
+        max-width: 110px;
+    }
+}
