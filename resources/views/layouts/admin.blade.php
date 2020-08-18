@@ -10,7 +10,8 @@
     <meta name="description" content="Admindek Bootstrap admin template made using Bootstrap 4 and it has huge amount of ready made feature, UI components, pages which completely fulfills any dashboard needs." />
     <meta name="keywords" content="flat ui, admin Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
     <meta name="author" content="colorlib" />
-    <title>@yield('title') | Oke Gold</title>
+    <title>@yield('title') | Alumni SEBI</title>
+    @stack('prepend-style')
     @include('includes.admin.style')
     @stack('style-addon')
 </head>
@@ -30,6 +31,7 @@
             </div>
         </div>
     </div>
+    @stack('prepend-script')
     @include('includes.admin.script')
     @stack('script-addon')
 </body>

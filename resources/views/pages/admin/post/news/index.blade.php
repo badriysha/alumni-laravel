@@ -1,84 +1,95 @@
 @extends('layouts.admin')
+@section('title', 'Berita')
 @section('content')
-<div class="breadcrumbs">
-  <div class="col-sm-8">
-      <div class="page-header float-left">
-          <div class="page-title">
-              <ol class="breadcrumb text-left" style="font-size: 14px; font-weight: 300;">
-                <li><a href="#">Dashboard</a></li>
-                <li><a href="#">Post</a></li>
-                <li class="active" style="font-weight: 400;">Daftar Berita</li>
-              </ol>
-          </div>
-      </div>
-  </div>
-</div>
-<div class="content mt-3">
-  <div class="animated fadeIn">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">
-                    <div class="row d-inline">
-                      <div class="col-sm-4 col-md-4">
-                        Daftar berita
-                      </div>
-                      <div class="col-sm-8 col-md-8">
-                        <a href="{{ route('news.create') }}" class="btn btn-primary btn-sm float-right ml-2"><i class="fa fa-plus"></i>&nbsp; Create News</a>
-                      </div>
+<div class="pcoded-content">
+    <div class="page-header card">
+        <div class="row align-items-end">
+            <div class="col-lg-8">
+                <div class="page-header-title">
+                    <i class="icon-book-open bg-c-blue"></i>
+                    <div class="d-inline">
+                        <h5>Berita</h5>
+                        <span>Daftar berita terbaru</span>
                     </div>
                 </div>
-                <div class="card-body">
-                    <table id="bootstrap-data-table-export" class="table table-striped table-bordered" style="width: 100%">
-                        <thead>
-                            <tr>
-                                <th>News Title</th>
-                                <th>Author</th>
-                                <th>Category</th>
-                                <th>Date</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                          @forelse ($items as $key => $item)
-                          <tr style="font-weight: 300; font-size: 14px;">
-                              <td>{{ $item->title }}</td>
-                              <td>Admin</td>
-                              <td>Berita</td>
-                              <td>{{ \Carbon\Carbon::create($item->post_date)->format('d/m/Y') }}</td>
-                              <td>
-                                  <a href="{{ route('news.edit', $item->id) }}" class="btn btn-info btn-sm">
-                                      <i class="fa fa-pencil"></i>
-                                  </a>
-                                  <form action="{{ route('news.destroy', $item->id) }}" method="POST" class="d-inline">
-                                      @csrf
-                                      @method('delete')
-                                      <button type="submit" class="btn btn-danger btn-sm">
-                                        <i class="fa fa-trash-o"></i>
-                                      </button>
-                                  </form>
-                              </td>
-                          </tr>
-                        @empty
-                          <tr>
-                              <td colspan="5" class="text-center">Data Kosong</td>
-                          </tr>
-                        @endforelse
-                        </tbody>
-                    </table>
+            </div>
+            <div class="col-lg-4">
+                <div class="page-header-breadcrumb">
+                    <ul class=" breadcrumb breadcrumb-title">
+                        <li class="breadcrumb-item">
+                        <a href="{{ route('dashboard') }}"><i class="icon-book-open"></i></a>
+                        </li>
+                        <li class="breadcrumb-item"><a href="#!">Berita</a> </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pcoded-inner-content">
+        <div class="main-body">
+            <div class="page-wrapper">
+                <div class="page-body">
+                    {{-- start table --}}
+                    <div class="card">
+                      <div class="card-block">
+                        <a href="{{ route('news.create') }}"><button class="btn btn-sm btn-primary">Create News</button></a>
+                        <div class="dt-responsive table-responsive">
+                              <table id="base-style" class="table table-striped table-bordered nowrap">
+                                  <thead>
+                                      <tr>
+                                          <th>Judul Berita</th>
+                                          <th>Author</th>
+                                          <th>Tanggal</th>
+                                          <th>Action</th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                      @forelse ($items as $item)
+                                      <tr>
+                                        <td>{{ $item->title }}</td>
+                                        <td>Admin</td>
+                                        <td>{{ \Carbon\Carbon::create($item->post_date)->format('Y/m/d') }}</td>
+                                        <td class="text-center">
+                                          <a href="{{ route('news.edit', $item->id) }}" class="text-primary">
+                                            <span class="icofont icofont-ui-edit"></span>
+                                          </a>
+                                          <a href="{{ route('news.destroy', $item->id) }}" class="text-danger px-2" onclick="event.preventDefault();document.getElementById('destroy-form').submit();">
+                                            <i class="fa fa-trash"></i>
+                                          </a>
+                                          <form id="destroy-form" action="{{ route('news.destroy', $item->id) }}" method="POST" style="display: none">
+                                          @csrf
+                                          </form>
+                                        </td>
+                                      </tr>
+                                      @empty
+                                          <tr>
+                                            <td colspan="4" class="text-center">Data Kosong</td>
+                                          </tr>
+                                      @endforelse
+                                  </tbody>
+                              </table>
+                          </div>
+                      </div>
+                  </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 @endsection
-@push('addon-style')
-<link rel="stylesheet" href="{{ url('backend/vendors/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}">
-<link rel="stylesheet" href="{{ url('backend/vendors/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css') }}">
+@push('style-addon')
+  <link rel="stylesheet" type="text/css" href="{{ url('backend/css/datatables.bootstrap4.min.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url('backend/css/buttons.datatables.min.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url('backend/css/responsive.bootstrap4.min.css') }}">
 @endpush
-@push('addon-script')
-  <script src="{{ url('backend/vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-  <script src="{{ url('backend/vendors/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
-  <script src="{{ url('backend/vendors/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js') }}"></script>
-  <script src="{{ url('backend/assets/js/init-scripts/data-table/datatables-init.js') }}"></script>
+@push('script-addon')
+    <script src="{{ url('backend/js/jquery.datatables.min.js') }}" type="text/javascript"></script>
+    <script src="{{ url('backend/js/datatables.buttons.min.js') }}" type="text/javascript"></script>
+    <script src="{{ url('backend/js/datatables.buttons.min-2.js') }}" type="text/javascript"></script>
+    <script src="{{ url('backend/js/buttons.flash.min.js') }}" type="text/javascript"></script>
+    <script src="{{ url('backend/js/buttons.html5.min.js') }}" type="text/javascript"></script>
+    <script src="{{ url('backend/js/datatables.bootstrap4.min.js') }}" type="text/javascript"></script>
+    <script src="{{ url('backend/js/datatables.responsive.min.js') }}" type="text/javascript"></script>
+    <script src="{{ url('backend/js/responsive.bootstrap4.min.js') }}" type="text/javascript"></script>
+    <script src="{{ url('backend/js/data-table-custom.js') }}" type="text/javascript"></script>
 @endpush

@@ -8,6 +8,7 @@
 <link rel="stylesheet" type="text/css" href="{{ url('backend/css/themify-icons.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ url('backend/css/icofont.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ url('backend/css/font-awesome-n.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url('backend/css/simple-line-icons.css') }}">
 <link rel="stylesheet" type="text/css" media="all" href="{{ url('backend/css/chartist.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ url('backend/css/style.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ url('backend/css/pages.css') }}">

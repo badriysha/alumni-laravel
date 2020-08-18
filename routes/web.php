@@ -17,7 +17,7 @@ Route::post('logout', 'LoginController@logout');
 
 Route::prefix('admin')
     ->namespace('Admin')
-    ->middleware('role:ADMIN')
+    ->middleware(['role:ADMIN'])
     ->group(function () {
         Route::get('/', 'DashboardController@index')
             ->name('dashboard');
@@ -31,4 +31,7 @@ Route::prefix('admin')
             });
     });
 
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+    \UniSharp\LaravelFilemanager\Lfm::routes();
+});
 Auth::routes(['verify' => 'true']);

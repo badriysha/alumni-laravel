@@ -1,73 +1,113 @@
 @extends('layouts.admin')
+@section('title', 'Update Event')
 @section('content')
-<div class="content mt-3">
-    <div class="card">
-        <div class="card-header">
-            Create <strong>Event</strong>
-        </div>
-        @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-        @endif
-        <div class="card-body card-block">
-            <form action="{{ route('event.update', $item->id) }}" method="POST" enctype="multipart/form-data" class="form-horizontal">
-                @csrf
-                @method('PUT')
-                <div class="form-group">
-                        <div class="row">
-                            <div class="col-sm-12 col-md-10 col-lg-6">
-                                <div class="form-group">
-                                    <label for="date" class=" form-control-label">Date</label>
-                                    <input type="date" class="form-control" name="date" value="{{ $item->date }}" placeholder="Tanggal">
-                                </div>
-                            </div>
-                            <div class="col-sm-12 col-md-10 col-lg-6">
-                                <div class="form-group">
-                                    <label for="post_date" class=" form-control-label">Category</label>
-                                    <select name="category" class="form-control">
-                                        <option value="" holder>select category</option>
-                                        <option value="">Kajian</option>
-                                        <option value="">Bisnis</option>
-                                        <option value="">Webinar</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group mt-4">
-                            <label for="title" class=" form-control-label">Event Title</label>
-                            <input type="text" class="form-control" name="title" value="{{ $item->title }}" placeholder="enter event title">
-                        </div>
-                        <div class="form-group mt-4">
-                            <label for="image" class=" form-control-label">Thumbnail</label>
-                            <input type="file" name="image" class="form-control-file">
-                        </div>
-                        <div class="form-group mt-5">
-                            <textarea name="desc" rows="10" class="form-control">{{ $item->desc }}</textarea>
-                        </div>
-                        <div class="row text-center">
-                            <div class="col-sm-12 col-md-3 mt-2 order-2 order-md-1">
-                                <a href="{{ route('event.index') }}" class="btn btn-outline-secondary btn-block">Cancel</a>
-                            </div>
-                            <div class="col-sm-12 col-md-3 mt-2 order-1 order-md-2">
-                                <button type="submit" class="btn btn-primary btn-block">Update</button>
-                            </div>
-                        </div>
+<div class="pcoded-content">
+    <div class="page-header card">
+        <div class="row align-items-end">
+            <div class="col-lg-8">
+                <div class="page-header-title">
+                    <i class="icon-calendar bg-c-blue"></i>
+                    <div class="d-inline">
+                        <h5>Update Event</h5>
+                        {{-- <span>Daftar berita terbaru</span> --}}
+                    </div>
                 </div>
-            </form>
+            </div>
+            <div class="col-lg-4">
+                <div class="page-header-breadcrumb">
+                    <ul class=" breadcrumb breadcrumb-title">
+                        <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"><i class="icon-calendar"></i></a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('event.index') }}">Events</a> </li>
+                        <li class="breadcrumb-item"><a href="#!">Update Event</a> </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pcoded-inner-content">
+        <div class="main-body">
+            <div class="page-wrapper">
+                <div class="page-body">
+                    {{-- start content --}}
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5>Event Form Inputs</h5>
+                                </div>
+                                @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
+                                <div class="card-block">
+                                    <form action="{{ route('event.update', $item->id) }}" method="POST" enctype="multipart/form-data">
+                                        @csrf
+                                        @method('PUT')
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">Category</label>
+                                            <div class="col-sm-10">
+                                                <select name="select" class="form-control">
+                                                    <option value="opt1">Select Category
+                                                    </option>
+                                                    <option value="opt2">Type 2</option>
+                                                    <option value="opt3">Type 3</option>
+                                                    <option value="opt4">Type 4</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">Date</label>
+                                            <div class="col-sm-10">
+                                                <input name="date" class="form-control" type="date" value="{{ $item->date }}" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">Thumbnail</label>
+                                            <div class="col-sm-10">
+                                                <input type="file" name="image" class="form-control" value="{{ $item->image }}">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">Event Title</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" name="title" class="form-control" value="{{ $item->title }}">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <textarea class="form-control" id="editor" name="desc">{{ $item->desc }}</textarea>
+                                        </div>
+                                        <div class="form-group text-center">
+                                            <button type="submit" class="btn btn-primary btn-block">Update</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 @endsection
-@push('addon-style')
-    <script src="{{ url('backend/vendors/ckeditor/ckeditor.js') }}"></script>
+@push('style-addon')
+    <script type="text/javascript" src="{{ url('vendor/ckeditor4/ckeditor.js') }}"></script>
 @endpush
-@push('addon-script')
-<script>
-    CKEDITOR.replace( 'desc' );
-</script>
+@push('script-addon')
+    <script>
+        var options = {
+        filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
+        filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
+        filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
+        filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
+        };
+    </script>
+    <script>
+        CKEDITOR.replace('editor', options);
+    </script>
 @endpush

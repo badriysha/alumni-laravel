@@ -5,7 +5,7 @@
                 <img class="img-fluid" src="{{ url('backend/png/logo.png') }}" alt="Theme-Logo" />
             </a>
             <a class="mobile-menu" id="mobile-collapse" href="#!">
-                <i class="feather icon-menu icon-toggle-right"></i>
+                <i class="icon-menu icon-toggle-right"></i>
             </a>
             <a class="mobile-options waves-effect waves-light">
                 <i class="feather icon-more-horizontal"></i>
@@ -43,22 +43,12 @@
                         <ul class="show-notification profile-notification dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
                             <li>
                                 <a href="#!">
-                                    <i class="feather icon-settings"></i> Settings
+                                    <i class="icon-settings"></i> Settings
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
-                                    <i class="feather icon-user"></i> Profile
-                                </a>
-                            </li>
-                            <li>
-                                <a href="email-inbox.html">
-                                    <i class="feather icon-mail"></i> My Messages
-                                </a>
-                            </li>
-                            <li>
-                                <a href="auth-lock-screen.html">
-                                <i class="feather icon-lock"></i> Lock Screen
+                                    <i class="icon-user"></i> Profile
                                 </a>
                             </li>
                             <li>

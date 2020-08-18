@@ -12,8 +12,8 @@
 <script type="text/javascript" src="{{ url('backend/js/pcoded.min.js') }}"></script>
 
 <script type="text/javascript" src="{{ url('backend/js/jquery.flot.js') }}"></script>
-{{-- <script type="text/javascript" src="{{ url('backend/js/jquery.flot.categories.js') }}"></script>
-<script type="text/javascript" src="{{ url('backend/js/jquery.flot.tooltip.min.js') }}"></script> --}}
+<script type="text/javascript" src="{{ url('backend/js/jquery.flot.categories.js') }}"></script>
+<script type="text/javascript" src="{{ url('backend/js/jquery.flot.tooltip.min.js') }}"></script>
 <script type="text/javascript" src="{{ url('backend/js/curvedlines.js') }}"></script>
 
 <script type="text/javascript" src="{{ url('backend/js/chartist.js') }}"></script>

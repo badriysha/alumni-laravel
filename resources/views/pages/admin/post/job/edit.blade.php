@@ -1,70 +1,107 @@
 @extends('layouts.admin')
+@section('title', 'Edit Lowongan')
 @section('content')
-<div class="content mt-3">
-    <div class="card">
-        <div class="card-header">
-            Create <strong>New Job</strong>
-        </div>
-        @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-        @endif
-        <div class="card-body card-block">
-            <form action="{{ route('job.update', $item->id) }}" method="POST" enctype="multipart/form-data" class="form-horizontal">
-                @csrf
-                @method('PUT')
-                <div class="form-group">
-                        <div class="row">
-                            <div class="col-sm-12 col-md-10 col-lg-6">
-                                <div class="form-group">
-                                    <label for="company_name" class=" form-control-label">Company Name</label>
-                                    <input type="text" class="form-control" name="company_name" value="{{ $item->company_name }}" placeholder="enter company name">
-                                </div>
-                            </div>
-                            <div class="col-sm-12 col-md-10 col-lg-6">
-                                <div class="form-group">
-                                    <label for="date" class=" form-control-label">Date</label>
-                                    <input type="date" class="form-control" name="date" value="{{ $item->date }}" placeholder="Tanggal">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group mt-4">
-                            <label for="position" class=" form-control-label">Position</label>
-                            <input type="text" class="form-control" name="position" value="{{ $item->position }}" placeholder="enter position">
-                        </div>
-                        <div class="form-group mt-4">
-                            <label for="company_logo" class=" form-control-label">Company Logo</label>
-                            <input type="file" name="company_logo" class="form-control-file">
-                        </div>
-                        <div class="form-group mt-5">
-                            <textarea name="jobdesc" rows="10" class="form-control">{{ $item->jobdesc }}</textarea>
-                        </div>
-                        <div class="row text-center">
-                            <div class="col-sm-12 col-md-3 mt-2 order-2 order-md-1">
-                                <a href="{{ route('job.index') }}" class="btn btn-outline-secondary btn-block">Cancel</a>
-                            </div>
-                            <div class="col-sm-12 col-md-3 mt-2 order-1 order-md-2">
-                                <button type="submit" class="btn btn-primary btn-block">Update</button>
-                            </div>
-                        </div>
+<div class="pcoded-content">
+    <div class="page-header card">
+        <div class="row align-items-end">
+            <div class="col-lg-8">
+                <div class="page-header-title">
+                    <i class="icon-briefcase bg-c-blue"></i>
+                    <div class="d-inline">
+                        <h5>Lowongan</h5>
+                        {{-- <span>Daftar berita terbaru</span> --}}
+                    </div>
                 </div>
-            </form>
+            </div>
+            <div class="col-lg-4">
+                <div class="page-header-breadcrumb">
+                    <ul class=" breadcrumb breadcrumb-title">
+                        <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"><i class="icon-home"></i></a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('job.index') }}">Jobs</a> </li>
+                        <li class="breadcrumb-item"><a href="#!">Edit Job</a> </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pcoded-inner-content">
+        <div class="main-body">
+            <div class="page-wrapper">
+                <div class="page-body">
+                    {{-- start content --}}
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5>Job Form Inputs</h5>
+                                </div>
+                                @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
+                                <div class="card-block">
+                                    <form action="{{ route('job.update', $item->id) }}" method="POST" enctype="multipart/form-data">
+                                        @csrf
+                                        @method('PUT')
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">Date</label>
+                                            <div class="col-sm-10">
+                                                <input name="date" class="form-control" type="date" value="{{ $item->date }}" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">Company Logo</label>
+                                            <div class="col-sm-10">
+                                                <input type="file" name="company_logo" class="form-control" value="{{ $item->company_logo }}">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">Company Name</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" name="company_name" class="form-control" value="{{ $item->company_name }}">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">Position</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" name="position" class="form-control" value="{{ $item->position }}">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <textarea class="form-control" id="editor" name="jobdesc">{{ $item->jobdesc }}</textarea>
+                                        </div>
+                                        <div class="form-group text-center">
+                                            <button type="submit" class="btn btn-primary btn-block">Update</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 @endsection
-@push('addon-style')
-    <script src="{{ url('backend/vendors/ckeditor/ckeditor.js') }}"></script>
+@push('style-addon')
+    <script type="text/javascript" src="{{ url('vendor/ckeditor4/ckeditor.js') }}"></script>
 @endpush
-@push('addon-script')
-<script>
-    CKEDITOR.replace('jobdesc', {
-        extraPlugins: 'easyimage'
-    });
-</script>
+@push('script-addon')
+    <script>
+        var options = {
+        filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
+        filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
+        filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
+        filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
+        };
+    </script>
+    <script>
+        CKEDITOR.replace('editor', options);
+    </script>
 @endpush
