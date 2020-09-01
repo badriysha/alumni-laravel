@@ -55,13 +55,20 @@ class JobController extends Controller
 
     public function update(JobRequest $request, $id)
     {
-        $data = $request->all();
-        $data['slug'] = Str::slug($request->company_name);
-        $data['company_logo'] = $request->file('company_logo')->store(
-            'assets/image/job',
-            'public'
-        );
-        $data['users_id'] = Auth::id();
+        if ($request->has('company_logo')) {
+            $data = $request->all();
+            $data['slug'] = Str::slug($request->company_name);
+            $data['company_logo'] = $request->file('company_logo')->store(
+                'assets/image/job',
+                'public'
+            );
+            $data['users_id'] = Auth::id();
+        } else {
+            $data = $request->all();
+            $data['slug'] = Str::slug($request->company_name);
+            $data['users_id'] = Auth::id();
+        }
+
         $item = Job::findOrFail($id);
         $item->update($data);
         return redirect()->route('job.index');

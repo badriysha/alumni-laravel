@@ -22,6 +22,7 @@ Route::prefix('admin')
         Route::get('/', 'DashboardController@index')
             ->name('dashboard');
         Route::resource('user', 'UserController');
+        Route::resource('roles', 'RoleController');
         Route::prefix('post')
             ->namespace('Post')
             ->group(function () {

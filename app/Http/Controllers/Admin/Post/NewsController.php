@@ -84,12 +84,17 @@ class NewsController extends Controller
      */
     public function update(NewsRequest $request, $id)
     {
-        $data = $request->all();
-        $data['slug'] = Str::slug($request->title);
-        $data['image'] = $request->file('image')->store(
-            'assets/image/news',
-            'public'
-        );
+        if ($request->has('image')) {
+            $data = $request->all();
+            $data['slug'] = Str::slug($request->title);
+            $data['image'] = $request->file('image')->store(
+                'assets/image/news',
+                'public'
+            );
+        } else {
+            $data = $request->all();
+            $data['slug'] = Str::slug($request->title);
+        }
         $item = News::findOrFail($id);
         $item->update($data);
         return redirect()->route('news.index');

@@ -85,12 +85,17 @@ class EventController extends Controller
      */
     public function update(EventRequest $request, $id)
     {
-        $data = $request->all();
-        $data['slug'] = Str::slug($request->title);
-        $data['image'] = $request->file('image')->store(
-            'assets/image/event',
-            'public'
-        );
+        if ($request->has('image')) {
+            $data = $request->all();
+            $data['slug'] = Str::slug($request->title);
+            $data['image'] = $request->file('image')->store(
+                'assets/image/event',
+                'public'
+            );
+        } else {
+            $data = $request->all();
+            $data['slug'] = Str::slug($request->title);
+        }
         $item = Event::findOrFail($id);
         $item->update($data);
         return redirect()->route('event.index');
